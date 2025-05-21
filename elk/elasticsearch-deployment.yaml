@@ -1,3 +1,4 @@
+---
 # Elasticsearch Deployment
 apiVersion: apps/v1
 kind: Deployment
@@ -27,6 +28,10 @@ spec:
         env:
         - name: discovery.type
           value: single-node
+        - name: xpack.security.enabled
+          value: "false"
+        - name: xpack.security.http.ssl.enabled
+          value: "false"
         resources:
           limits:
             memory: 2Gi
