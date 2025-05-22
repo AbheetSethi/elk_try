@@ -24,8 +24,9 @@ spec:
         - name: logstash-config-volume
           mountPath: /usr/share/logstash/pipeline/logstash.conf
           subPath: logstash.conf
-        - name: backend-logs
-          mountPath: /var/log/backend
+        - name: desktop-log
+          mountPath: /usr/share/logstash/logs/backend.log
+          subPath: backend.log
         resources:
           limits:
             memory: 1Gi
@@ -37,10 +38,10 @@ spec:
       - name: logstash-config-volume
         configMap:
           name: logstash-config
-      - name: backend-logs
+      - name: desktop-log
         hostPath:
-          path: /var/log/backend
-          type: Directory
+          path: /home/abheet/Desktop/backend.log
+          type: File
 ---
 apiVersion: v1
 kind: Service

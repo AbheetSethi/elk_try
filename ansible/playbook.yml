@@ -8,25 +8,25 @@
     - kubernetes.core
 
   tasks:
-    - name: Apply Elasticsearch deployment
-      kubernetes.core.k8s:
-        state: present
-        src: ../elk/elasticsearch-deployment.yaml
+    # - name: Apply Elasticsearch deployment
+    #   kubernetes.core.k8s:
+    #     state: present
+    #     src: ../elk/elasticsearch-deployment.yaml
 
-    - name: Apply Logstash ConfigMap
-      kubernetes.core.k8s:
-        state: present
-        src: ../elk/logstash-configmap.yaml
+    # - name: Apply Logstash ConfigMap
+    #   kubernetes.core.k8s:
+    #     state: present
+    #     src: ../elk/logstash-configmap.yaml
 
-    - name: Apply Logstash deployment
-      kubernetes.core.k8s:
-        state: present
-        src: ../elk/logstash-deployment.yaml
+    # - name: Apply Logstash deployment
+    #   kubernetes.core.k8s:
+    #     state: present
+    #     src: ../elk/logstash-deployment.yaml
 
-    - name: Apply Kibana deployment
-      kubernetes.core.k8s:
-        state: present
-        src: ../elk/kibana-deployment.yaml
+    # - name: Apply Kibana deployment
+    #   kubernetes.core.k8s:
+    #     state: present
+    #     src: ../elk/kibana-deployment.yaml
 
     # --- Your existing app microservices deployment ---
 
