@@ -39,6 +39,7 @@
       kubernetes.core.k8s:
         state: present
         src: /tmp/backend-deployment.yaml
+        kubeconfig: ~/.kube/config
         
     # - name: Deploy backend
     #   kubernetes.core.k8s:
@@ -49,41 +50,49 @@
       kubernetes.core.k8s:
         state: present
         src: manifests/backend-service.yaml
+        kubeconfig: ~/.kube/config
 
     - name: Deploy ml-service
       kubernetes.core.k8s:
         state: present
         src: manifests/ml-deployment.yaml
+        kubeconfig: ~/.kube/config
 
     - name: Expose ml-service
       kubernetes.core.k8s:
         state: present
         src: manifests/ml-service.yaml
+        kubeconfig: ~/.kube/config
 
     - name: Deploy frontend
       kubernetes.core.k8s:
         state: present
         src: manifests/frontend-deployment.yaml
+        kubeconfig: ~/.kube/config
 
     - name: Expose frontend
       kubernetes.core.k8s:
         state: present
         src: manifests/frontend-service.yaml
+        kubeconfig: ~/.kube/config
 
     - name: Apply backend HPA
       kubernetes.core.k8s:
         state: present
         src: manifests/backend-hpa.yaml
+        kubeconfig: ~/.kube/config
 
     - name: Apply ml-service HPA
       kubernetes.core.k8s:
         state: present
         src: manifests/ml-service-hpa.yaml
+        kubeconfig: ~/.kube/config
 
     - name: Apply frontend HPA
       kubernetes.core.k8s:
         state: present
         src: manifests/frontend-hpa.yaml
+        kubeconfig: ~/.kube/config
 
     # - name: Port forward backend service
     #   ansible.builtin.shell: kubectl port-forward service/backend 5000:5000 &
