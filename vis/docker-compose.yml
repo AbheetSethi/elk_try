@@ -51,7 +51,7 @@ services:
     container_name: filebeat
     user: root
     volumes:
-      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
       - /var/log/backend:/var/log/backend:ro
     depends_on:
       - elasticsearch
