@@ -38,13 +38,24 @@ services:
       - "5044:5044"
     volumes:
       - ./logstash/pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
-      - /var/log/backend:/var/log/backend:ro  # Adjust path as needed
+      - /var/log/backend:/var/log/backend:ro
     depends_on:
       - elasticsearch
     deploy:
       resources:
         limits:
           memory: 1g
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:8.7.0
+    container_name: filebeat
+    user: root
+    volumes:
+      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - /var/log/backend:/var/log/backend:ro
+    depends_on:
+      - elasticsearch
+    command: ["--strict.perms=false"]
 
 volumes:
   esdata:
