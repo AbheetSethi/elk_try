@@ -62,6 +62,16 @@ if counter_collection.count_documents({"_id": "patient_id"}) == 0:
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
+# File handler - this logs to a local file
+file_handler = logging.FileHandler('/var/log/backend/backend.log')
+file_handler.setLevel(logging.INFO)
+
+# Optional: add formatting
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+
+logger.addHandler(file_handler)
+
 logstash_handler = TCPLogstashHandler(
     host='host.docker.internal',
     port=5044,
